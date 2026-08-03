@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Rincón de Gredos — Casa Rural en Navaluenga, Ávila</title>
+<meta name="description" content="Casa rural en Navaluenga, Sierra de Gredos (Ávila). 6 habitaciones, entorno de montaña y bosque de pinos. Consulta disponibilidad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#22303F;
+    --steel:#5C6B78;
+    --pine:#3A4A34;
+    --sand:#C4B49C;
+    --terracotta:#A85C3D;
+    --wood:#6B4A32;
+    --cream:#FAF6EF;
+    --cream-2:#F2ECDF;
+    --shadow: 0 12px 30px rgba(34,48,63,.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    color:var(--navy);
+    background:var(--cream);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    color:var(--navy);
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .container{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .eyebrow{
+    font-family:'Work Sans', sans-serif;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--terracotta);
+    font-weight:600;
+  }
+
+  /* ---------- HEADER / NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(250,246,239,0);
+    transition:background .3s ease, box-shadow .3s ease;
+  }
+  header.scrolled{
+    background:rgba(250,246,239,.96);
+    box-shadow:0 2px 16px rgba(34,48,63,.08);
+    backdrop-filter:blur(6px);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 20px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem;
+    color:#fff;
+    transition:color .3s ease;
+  }
+  header.scrolled .brand{ color:var(--navy); }
+  .brand img{ height:38px; width:38px; border-radius:50%; object-fit:cover; }
+  nav.links{ display:none; gap:34px; align-items:center; }
+  nav.links a{
+    font-size:.86rem; font-weight:500; color:#fff;
+    position:relative; padding:4px 0; transition:color .3s ease;
+  }
+  header.scrolled nav.links a{ color:var(--navy); }
+  nav.links a:after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--terracotta); transition:width .25s ease;
+  }
+  nav.links a:hover:after{ width:100%; }
+  .nav-cta{
+    display:none;
+    background:var(--terracotta); color:#fff !important; padding:10px 20px;
+    border-radius:30px; font-size:.82rem; font-weight:600;
+  }
+  .burger{
+    width:26px; height:20px; position:relative; cursor:pointer; z-index:101;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .burger span{
+    display:block; height:2px; width:100%; background:#fff; border-radius:2px;
+    transition:.3s ease;
+  }
+  header.scrolled .burger span{ background:var(--navy); }
+  .burger.open span:nth-child(1){ transform:translateY(9px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
+  .burger.open span{ background:var(--navy) !important; }
+
+  .mobile-menu{
+    position:fixed; inset:0; background:var(--cream); z-index:99;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:28px; transform:translateY(-100%); transition:transform .35s ease;
+  }
+  .mobile-menu.open{ transform:translateY(0); }
+  .mobile-menu a{ font-family:'Fraunces', serif; font-size:1.6rem; color:var(--navy); }
+  .mobile-menu .nav-cta{ display:inline-block; margin-top:10px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; min-height:100vh;
+    display:flex; align-items:flex-end;
+    background:linear-gradient(180deg, rgba(34,48,63,.35), rgba(34,48,63,.75)), url('Imagenes/hotel.png') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{ padding:120px 0 90px; width:100%; }
+  .hero .eyebrow{ color:var(--sand); }
+  .hero h1{
+    font-size:2.5rem; color:#fff; margin-top:14px; max-width:14ch;
+  }
+  .hero p.sub{
+    margin-top:18px; max-width:46ch; font-size:1.02rem; color:#EAE3D6;
+  }
+  .hero-actions{ margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-block; padding:14px 26px; border-radius:30px;
+    font-weight:600; font-size:.92rem; transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary{ background:var(--terracotta); color:#fff; box-shadow:var(--shadow); }
+  .btn-primary:hover{ transform:translateY(-2px); }
+  .btn-ghost{ border:1.5px solid rgba(255,255,255,.7); color:#fff; }
+  .btn-ghost:hover{ background:rgba(255,255,255,.12); }
+
+  .scroll-cue{
+    position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+    color:#fff; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase;
+    display:flex; flex-direction:column; align-items:center; gap:8px; opacity:.8;
+  }
+  .scroll-cue .line{ width:1px; height:34px; background:#fff; animation:scrollpulse 1.8s infinite; }
+  @keyframes scrollpulse{
+    0%{ transform:scaleY(0); transform-origin:top; }
+    50%{ transform:scaleY(1); transform-origin:top; }
+    51%{ transform-origin:bottom; }
+    100%{ transform:scaleY(0); transform-origin:bottom; }
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ padding:90px 0; }
+  .sec-head{ max-width:640px; margin-bottom:48px; }
+  .sec-head h2{ font-size:2rem; margin-top:10px; }
+  .sec-head p{ margin-top:14px; color:var(--steel); font-size:1.02rem; }
+  .bg-alt{ background:var(--cream-2); }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- HABITACIONES ---------- */
+  .rooms-note{
+    background:#fff; border:1px solid var(--sand); border-left:4px solid var(--pine);
+    border-radius:10px; padding:16px 20px; margin-bottom:40px; color:var(--steel); font-size:.92rem;
+  }
+  .room-grid{
+    display:grid; grid-template-columns:1fr; gap:26px;
+  }
+  .room-card{
+    background:#fff; border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
+    transition:transform .3s ease;
+  }
+  .room-card:hover{ transform:translateY(-6px); }
+  .room-card .img-wrap{ aspect-ratio:4/3; overflow:hidden; }
+  .room-card img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+  .room-card:hover img{ transform:scale(1.06); }
+  .room-card .body{ padding:22px 22px 26px; }
+  .room-card h3{ font-size:1.2rem; }
+  .room-card p{ color:var(--steel); font-size:.92rem; margin-top:8px; }
+  .room-card .cta{
+    margin-top:16px; display:inline-block; font-size:.82rem; font-weight:600;
+    color:var(--terracotta); border-bottom:1.5px solid var(--terracotta); padding-bottom:2px;
+  }
+  .room-card.placeholder{
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    background:var(--pine); color:#fff; padding:40px 24px; min-height:260px;
+  }
+  .room-card.placeholder h3{ color:#fff; }
+  .room-card.placeholder p{ color:#DCE4DA; }
+
+  /* ---------- GALERIA ---------- */
+  .gallery{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+  }
+  .gallery figure{
+    border-radius:12px; overflow:hidden; cursor:pointer; position:relative;
+    aspect-ratio:1/1;
+  }
+  .gallery figure img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+  .gallery figure:hover img{ transform:scale(1.08); }
+  .gallery figure:nth-child(1),.gallery figure:nth-child(4){ grid-column:span 2; aspect-ratio:16/10; }
+
+  .lightbox{
+    position:fixed; inset:0; background:rgba(19,26,33,.94); z-index:200;
+    display:none; align-items:center; justify-content:center; padding:24px;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img{ max-width:100%; max-height:88vh; border-radius:8px; }
+  .lightbox-close{
+    position:absolute; top:22px; right:26px; color:#fff; font-size:1.8rem; cursor:pointer;
+  }
+
+  /* ---------- ENTORNO ---------- */
+  .entorno{
+    display:grid; grid-template-columns:1fr; gap:36px; align-items:center;
+  }
+  .entorno img{ border-radius:18px; box-shadow:var(--shadow); }
+  .entorno .text h2{ font-size:1.9rem; }
+  .entorno .text p{ margin-top:16px; color:var(--steel); }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .tag{
+    background:#fff; border:1px solid var(--sand); color:var(--pine);
+    padding:8px 14px; border-radius:20px; font-size:.8rem; font-weight:600;
+  }
+
+  /* ---------- CONTACTO ---------- */
+  .contact-grid{
+    display:grid; grid-template-columns:1fr; gap:40px;
+  }
+  .contact-info h2{ font-size:1.9rem; }
+  .contact-info p{ color:var(--steel); margin-top:14px; }
+  .contact-info .detail{
+    margin-top:26px; display:flex; flex-direction:column; gap:14px;
+  }
+  .contact-info .detail div{ font-size:.95rem; }
+  .contact-info .detail b{ display:block; font-family:'Fraunces', serif; font-size:1rem; color:var(--navy); }
+
+  form{
+    background:#fff; border-radius:18px; padding:30px; box-shadow:var(--shadow);
+  }
+  .form-row{ display:grid; grid-template-columns:1fr; gap:16px; }
+  .form-row.two{ grid-template-columns:1fr; }
+  .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+  .field label{ font-size:.8rem; font-weight:600; color:var(--steel); }
+  .field input, .field textarea{
+    border:1.5px solid var(--sand); border-radius:8px; padding:12px 14px;
+    font-family:'Work Sans', sans-serif; font-size:.94rem; color:var(--navy);
+    background:var(--cream); transition:border-color .2s ease;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:none; border-color:var(--terracotta);
+  }
+  .field textarea{ resize:vertical; min-height:100px; }
+  form .btn-primary{ width:100%; border:none; cursor:pointer; text-align:center; font-family:'Work Sans', sans-serif; }
+  .form-note{ font-size:.75rem; color:var(--steel); margin-top:12px; text-align:center; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--navy); color:#EAE3D6; padding:50px 0 26px;
+  }
+  .footer-inner{
+    display:flex; flex-direction:column; gap:26px; align-items:flex-start;
+  }
+  .footer-brand{ display:flex; align-items:center; gap:12px; }
+  .footer-brand img{ height:44px; width:44px; border-radius:50%; }
+  .footer-brand span{ font-family:'Fraunces', serif; font-size:1.1rem; color:#fff; }
+  footer .foot-meta{ font-size:.82rem; color:#B8C2CB; }
+  footer .foot-bottom{
+    margin-top:34px; padding-top:20px; border-top:1px solid rgba(255,255,255,.12);
+    font-size:.76rem; color:#8FA0AB; width:100%;
+  }
+
+  /* ---------- RESPONSIVE (desktop up) ---------- */
+  @media (min-width:760px){
+    nav.links{ display:flex; }
+    .nav-cta{ display:inline-block; }
+    .burger{ display:none; }
+    .hero h1{ font-size:3.6rem; max-width:16ch; }
+    .hero p.sub{ font-size:1.12rem; }
+    .room-grid{ grid-template-columns:repeat(3,1fr); }
+    .entorno{ grid-template-columns:1fr 1fr; }
+    .contact-grid{ grid-template-columns:1.1fr 1fr; }
+    .form-row.two{ grid-template-columns:1fr 1fr; }
+    .footer-inner{ flex-direction:row; justify-content:space-between; align-items:center; }
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="nav-inner container">
+    <a href="#top" class="brand">
+      <img src="Imagenes/logo.png" alt="Logo El Rincón de Gredos">
+      El Rincón de Gredos
+    </a>
+    <nav class="links">
+      <a href="#habitaciones">Habitaciones</a>
+      <a href="#galeria">Galería</a>
+      <a href="#entorno">Entorno</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#contacto" class="btn nav-cta">Consultar disponibilidad</a>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#habitaciones">Habitaciones</a>
+  <a href="#galeria">Galería</a>
+  <a href="#entorno">Entorno</a>
+  <a href="#contacto">Contacto</a>
+  <a href="#contacto" class="btn btn-primary nav-cta">Consultar disponibilidad</a>
+</div>
+
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <div class="eyebrow">Navaluenga · Ávila · Sierra de Gredos</div>
+    <h1>Un refugio de piedra y pino en el corazón de Gredos</h1>
+    <p class="sub">Casa rural de 6 habitaciones donde te recibimos como en casa, rodeados de bosque de pinos y vistas a la sierra.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn btn-primary">Consultar disponibilidad</a>
+      <a href="#habitaciones" class="btn btn-ghost">Ver habitaciones</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Descubre</span><span class="line"></span></div>
+</section>
+
+<section id="habitaciones">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Alojamiento</div>
+      <h2>Habitaciones</h2>
+      <p>6 habitaciones con vistas a la Sierra de Gredos, mobiliario de madera maciza y mucha luz natural.</p>
+    </div>
+    <div class="rooms-note reveal">
+      Estas fotos son ejemplos representativos del alojamiento. Consulta con nosotros la disponibilidad, precio y detalles de cada habitación.
+    </div>
+    <div class="room-grid">
+      <div class="room-card reveal">
+        <div class="img-wrap"><img src="Imagenes/habitacion_01.png" alt="Habitación con vistas a la montaña y balcón"></div>
+        <div class="body">
+          <h3>Vistas a la sierra</h3>
+          <p>Cama de matrimonio, balcón privado y vistas directas a los picos de Gredos.</p>
+          <a href="#contacto" class="cta">Consultar disponibilidad →</a>
+        </div>
+      </div>
+      <div class="room-card reveal">
+        <div class="img-wrap"><img src="Imagenes/habitacion_02.png" alt="Habitación con mobiliario de madera rústica"></div>
+        <div class="body">
+          <h3>Madera y calidez</h3>
+          <p>Ambiente cálido con mobiliario de madera maciza y textiles naturales.</p>
+          <a href="#contacto" class="cta">Consultar disponibilidad →</a>
+        </div>
+      </div>
+      <div class="room-card reveal">
+        <div class="img-wrap"><img src="Imagenes/habitacion_03.png" alt="Habitación con luz natural"></div>
+        <div class="body">
+          <h3>Luz natural</h3>
+          <p>Amplios ventanales orientados al valle, ideales para despertar con la sierra de fondo.</p>
+          <a href="#contacto" class="cta">Consultar disponibilidad →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="bg-alt">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Un vistazo</div>
+      <h2>Galería</h2>
+      <p>Piedra, madera y montaña: así es El Rincón de Gredos.</p>
+    </div>
+    <div class="gallery reveal">
+      <figure onclick="openLightbox('Imagenes/hotel.png')"><img src="Imagenes/hotel.png" alt="Fachada de la casa rural"></figure>
+      <figure onclick="openLightbox('Imagenes/entorno.png')"><img src="Imagenes/entorno.png" alt="Acceso y jardín de la casa rural"></figure>
+      <figure onclick="openLightbox('Imagenes/habitacion_01.png')"><img src="Imagenes/habitacion_01.png" alt="Habitación con balcón"></figure>
+      <figure onclick="openLightbox('Imagenes/paisaje.png')"><img src="Imagenes/paisaje.png" alt="Vista panorámica de la Sierra de Gredos"></figure>
+      <figure onclick="openLightbox('Imagenes/habitacion_02.png')"><img src="Imagenes/habitacion_02.png" alt="Habitación con mobiliario de madera"></figure>
+      <figure onclick="openLightbox('Imagenes/habitacion_03.png')"><img src="Imagenes/habitacion_03.png" alt="Habitación con luz natural"></figure>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="Vista ampliada">
+</div>
+
+<section id="entorno">
+  <div class="container">
+    <div class="entorno">
+      <img class="reveal" src="Imagenes/paisaje.png" alt="Vista panorámica de la Sierra de Gredos al amanecer">
+      <div class="text reveal">
+        <div class="eyebrow">Sierra de Gredos</div>
+        <h2>Naturaleza al alcance de la puerta</h2>
+        <p>Navaluenga se asienta en la Sierra de Gredos, dentro del Sistema Central, un entorno de pinares, senderos de montaña y valles que invita al senderismo, la desconexión y el contacto con la naturaleza en cualquier época del año.</p>
+        <div class="tag-row">
+          <span class="tag">Senderismo</span>
+          <span class="tag">Bosque de pinos</span>
+          <span class="tag">Vistas de montaña</span>
+          <span class="tag">Desconexión</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="bg-alt">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="eyebrow">Contacto</div>
+        <h2>Consulta disponibilidad</h2>
+        <p>Cuéntanos tus fechas y cuántos sois. Te respondemos con disponibilidad y precio lo antes posible.</p>
+        <div class="detail">
+          <div><b>Email</b>gustavo.ldevaux@gmail.com</div>
+          <div><b>Ubicación</b>Navaluenga, Ávila — Sierra de Gredos</div>
+        </div>
+      </div>
+      <form id="contact-form" class="reveal">
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-row two">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="telefono">Teléfono (opcional)</label>
+            <input type="tel" id="telefono" name="telefono">
+          </div>
+        </div>
+        <div class="form-row two">
+          <div class="field">
+            <label for="fechas">Fechas aproximadas</label>
+            <input type="text" id="fechas" name="fechas" placeholder="Ej. 12–15 septiembre">
+          </div>
+          <div class="field">
+            <label for="huespedes">Nº de huéspedes</label>
+            <input type="number" id="huespedes" name="huespedes" min="1">
+          </div>
+        </div>
+        <div class="field">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos lo que necesites"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar consulta</button>
+        <p class="form-note">Al enviar se abrirá tu programa de correo con el mensaje ya redactado a gustavo.ldevaux@gmail.com.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="Imagenes/logo_seal.png" alt="Sello El Rincón de Gredos">
+      <span>El Rincón de Gredos</span>
+    </div>
+    <div class="foot-meta">Navaluenga, Ávila · Sierra de Gredos</div>
+  </div>
+  <div class="container">
+    <div class="foot-bottom">© 2026 El Rincón de Gredos. Todos los derechos reservados.</div>
+  </div>
+</footer>
+
+<script>
+  // Header background on scroll
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }));
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Lightbox
+  function openLightbox(src){
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  // Contact form -> mailto
+  document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const telefono = document.getElementById('telefono').value;
+    const fechas = document.getElementById('fechas').value;
+    const huespedes = document.getElementById('huespedes').value;
+    const mensaje = document.getElementById('mensaje').value;
+
+    const subject = encodeURIComponent('Consulta de disponibilidad — El Rincón de Gredos');
+    const body = encodeURIComponent(
+      `Nombre: ${nombre}\nEmail: ${email}\nTeléfono: ${telefono || '-'}\nFechas aproximadas: ${fechas || '-'}\nNº de huéspedes: ${huespedes || '-'}\n\nMensaje:\n${mensaje || '-'}`
+    );
+    window.location.href = `mailto:gustavo.ldevaux@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
+
+</body>
+</html>
